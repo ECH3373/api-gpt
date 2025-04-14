@@ -7,7 +7,7 @@ const message = async (req, res) => {
   const gpt = new OpenAI({ apiKey: config.gpt.key });
   const messages = [{ role: 'system', content: prompt }, ...history, message];
   history.push(message);
-  const completion = await gpt.chat.completions.create({ messages, model, functions: tools.lenght > 0 ? tools : null });
+  const completion = await gpt.chat.completions.create({ messages, model, functions: tools.length > 0 ? tools : null });
   const response = completion.choices[0].message;
   history.push(response);
   const data = { response, history };
